@@ -51,7 +51,8 @@ def main():
         # Visualization in a plot
         mcl.visualize(true_pose=true_pose, map_landmarks=map_landmarks)
         time.sleep(0.05)
-
+        
+        # terminate after point distribution converges 
         if step > 20 and np.std([p.x for p in mcl.particles]) < 0.1:
             print("Converged")
             break
