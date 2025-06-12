@@ -1,7 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from uefs_simulator import Vehicle, Lidar  # Assuming UEFS provides these classes
-
 class Particle:
     def __init__(self, x, y, theta, weight):
         self.x = x
@@ -54,38 +50,6 @@ class FastSLAM:
         return max(self.particles, key=lambda p: p.weight)
 
 def main():
-    # Initialize UEFS simulator
-    vehicle = Vehicle()
-    lidar = Lidar()
-
-    # Initial pose of the vehicle
-    initial_pose = (0.0, 0.0, 0.0)  # x, y, theta
-
-    # Initialize FastSLAM
-    fastslam = FastSLAM(num_particles=100, initial_pose=initial_pose)
-
-    # Simulation loop
-    for _ in range(1000):  # Run for 1000 time steps
-        # Get control inputs (velocity, steering angle)
-        velocity, steering_angle = vehicle.get_control_inputs()
-
-        # Get sensor observations (landmarks)
-        observations = lidar.get_observations()
-
-        # Update FastSLAM
-        fastslam.update(velocity, steering_angle, dt=0.1, observations=observations)
-
-        # Get the best particle (estimated pose)
-        best_particle = fastslam.get_best_particle()
-        print(f"Estimated Pose: ({best_particle.x}, {best_particle.y}, {best_particle.theta})")
-
-        # Visualize the map and trajectory
-        plt.clf()
-        for particle in fastslam.particles:
-            plt.plot(particle.x, particle.y, 'ro', markersize=1)
-        for landmark_id, (lx, ly) in best_particle.landmarks.items():
-            plt.plot(lx, ly, 'bo')
-        plt.pause(0.01)
-
-if __name__ == "__main__":
+    pass
+if name == "main":
     main()
